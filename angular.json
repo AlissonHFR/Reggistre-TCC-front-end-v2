@@ -27,7 +27,7 @@
             "tsConfig": "tsconfig.app.json",
             "allowedCommonJsDependencies": ["chart.js"],
             "assets": [
-              "src/favicon.ico",
+              "src/reggistre_logo_azul.png",
               "src/assets"
             ],
             "styles": [
@@ -98,7 +98,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/reggistre_logo_azul.png",
               "src/assets"
             ],
             "styles": [

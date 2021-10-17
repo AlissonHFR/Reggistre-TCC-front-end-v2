@@ -193,7 +193,7 @@ export function chartOptions() {
             borderCapStyle: 'rounded'
           },
           rectangle: {
-            backgroundColor: colors.theme['warning']
+            backgroundColor: colors.theme['success']
           },
           arc: {
             backgroundColor: colors.theme['primary'],
@@ -233,13 +233,13 @@ export function chartOptions() {
     gridLines: {
       borderDash: [2],
       borderDashOffset: [2],
-      color: (mode == 'dark') ? colors.gray[900] : colors.gray[300],
+      color: (mode == 'white') ? colors.gray[600] : colors.gray[400],
       drawBorder: false,
       drawTicks: false,
-      drawOnChartArea: (mode == 'dark') ? false : true,
+      drawOnChartArea: (mode == 'white') ? false : true,
       lineWidth: 1,
       zeroLineWidth: 0,
-      zeroLineColor: (mode == 'dark') ? colors.gray[900] : colors.gray[300],
+      zeroLineColor: (mode == 'white') ? colors.gray[600] : colors.gray[400],
       zeroLineBorderDash: [2],
       zeroLineBorderDashOffset: [2]
     },
@@ -288,14 +288,14 @@ export const chartExample1 = {
     scales: {
       yAxes: [{
         gridLines: {
-          color: colors.gray[900],
-          zeroLineColor: colors.gray[900],
+          color: colors.gray[400],
+          zeroLineColor: colors.gray[500],
           drawOnChartArea: false
         },
         ticks: {
           callback: function(value) {
             if (!(value % 10)) {
-              return '$' + value + 'k';
+              return 'R$ ' + value;
             }
           }
         }
@@ -303,9 +303,9 @@ export const chartExample1 = {
     }
   },
   data: {
-    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: ['Maio', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
     datasets: [{
-      label: 'Performance',
+      label: 'Estimativa',
       data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
     }]
   }
@@ -343,10 +343,10 @@ export const chartExample2 = {
     }
   },
   data: {
-    labels: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Jul", "Ago", "Set", "Out", "Nov", "Dez"],
     datasets: [
       {
-        label: "Sales",
+        label: "Valores",
         data: [25, 20, 30, 22, 17, 29],
         maxBarThickness: 10
       }

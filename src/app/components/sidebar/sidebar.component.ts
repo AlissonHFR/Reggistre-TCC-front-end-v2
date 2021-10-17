@@ -8,13 +8,14 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
-    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-gray', class: '' },
+    { path: '/tables', title: 'Categorias',  icon:'ni-bullet-list-67 text-gray', class: '' },
+    //{ path: '/tables1', title: 'Listar Receitas',  icon:'ni-bullet-list-67 text-gray', class: '' },
+    //{ path: '/tables2', title: 'Listar Despesas',  icon:'ni-bullet-list-67 text-gray', class: '' },
+    { path: '/tables', title: 'Premios',  icon:'ni-bullet-list-67 text-gray', class: '' },
+    //{ path: '/register', title: 'Register',  icon:'ni-circle-08 text-gray', class: '' },
+    { path: '/user-profile', title: 'Meu Perfil',  icon:'ni-single-02 text-gray', class: '' },
+    { path: '/login', title: 'Sair',  icon:'ni-user-run text-gray', class: '' }
 ];
 
 @Component({
