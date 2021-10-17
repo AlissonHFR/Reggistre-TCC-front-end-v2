@@ -14,6 +14,7 @@ import { NewCategoryComponent } from 'src/app/pages/category/new-category/new-ca
 import { ListCategoriesComponent } from 'src/app/pages/category/list-categories/list-categories.component';
 import { ListMovementsComponent } from 'src/app/pages/movement/list-movements/list-movements.component';
 import { NewMovementComponent } from 'src/app/pages/movement/new-movement/new-movement.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -21,6 +22,8 @@ import { NewMovementComponent } from 'src/app/pages/movement/new-movement/new-mo
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     ClipboardModule
