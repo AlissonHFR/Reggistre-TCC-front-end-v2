@@ -11,6 +11,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-gray', class: '' },
     { path: '/categories', title: 'Categorias',  icon:'ni-bullet-list-67 text-gray', class: '' },
     { path: '/new-category', title: 'Nova Categoria',  icon:'ni-bullet-list-67 text-gray', class: '' },
+    { path: '/movements', title: 'Movimentações',  icon:'ni-bullet-list-67 text-gray', class: '' },
+    { path: '/new-movement', title: 'Nova Movimentação',  icon:'ni-bullet-list-67 text-gray', class: '' },
     //{ path: '/tables1', title: 'Listar Receitas',  icon:'ni-bullet-list-67 text-gray', class: '' },
     //{ path: '/tables2', title: 'Listar Despesas',  icon:'ni-bullet-list-67 text-gray', class: '' },
     { path: '/tables', title: 'Premios',  icon:'ni-bullet-list-67 text-gray', class: '' },

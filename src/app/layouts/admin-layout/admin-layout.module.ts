@@ -12,6 +12,8 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NewCategoryComponent } from 'src/app/pages/category/new-category/new-category.component';
 import { ListCategoriesComponent } from 'src/app/pages/category/list-categories/list-categories.component';
+import { ListMovementsComponent } from 'src/app/pages/movement/list-movements/list-movements.component';
+import { NewMovementComponent } from 'src/app/pages/movement/new-movement/new-movement.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -28,7 +30,9 @@ import { ListCategoriesComponent } from 'src/app/pages/category/list-categories/
     UserProfileComponent,
     TablesComponent,
     NewCategoryComponent,
-    ListCategoriesComponent
+    ListCategoriesComponent,
+    NewMovementComponent,
+    ListMovementsComponent
   ]
 })
 
