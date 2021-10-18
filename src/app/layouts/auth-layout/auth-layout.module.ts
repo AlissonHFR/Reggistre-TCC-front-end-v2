@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PasswordRecoveryComponent } from 'src/app/pages/password-recovery/password-recovery.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +20,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordRecoveryComponent,
   ]
 })
 export class AuthLayoutModule { }

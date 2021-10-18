@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
+import { PasswordRecoveryComponent } from 'src/app/pages/password-recovery/password-recovery.component';
 
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 
 export const AuthLayoutRoutes: Routes = [
     { path: 'login',          component: LoginComponent },
-    { path: 'register',       component: RegisterComponent }
+    { path: 'register',       component: RegisterComponent },
+    { path: 'password-recovery',       component: PasswordRecoveryComponent }
 ];

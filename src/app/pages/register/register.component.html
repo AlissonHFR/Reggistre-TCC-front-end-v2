@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Bem-vindo ao Reggi$tre!</h1>
-          <p class="text-lead text-light">O software mais simples e prático para o seu controle financeiro pessoal.</p>
+          <p class="text-lead text-dark">O software mais simples e prático para o seu controle financeiro pessoal.</p>
         </div>
       </div>
     </div>
@@ -32,6 +32,9 @@
               <span class="btn-inner--icon"><img src="assets/img/icons/common/google.svg"></span>
               <span class="btn-inner--text">Google</span>
             </a> -->
+            <a class="navbar-brand">
+              <img src="assets/img/brand/reggistre_logo_azul.png" class="navbar-brand-img" style="height: 100px;"/>
+            </a>
           </div>
         </div>
         <div class="card-body px-lg-5 py-lg-5">
@@ -79,20 +82,20 @@
                 <input class="form-control" placeholder="Senha" type="password">
               </div>
             </div>
-            <div class="text-muted font-italic"><small>Força da senha: <span class="text-success font-weight-700">forte</span></small></div>
+            <!-- <div class="text-muted font-italic"><small>Força da senha: <span class="text-success font-weight-700">forte</span></small></div> -->
             <div class="row my-4">
               <div class="col-12">
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input class="custom-control-input" id="customCheckRegister" type="checkbox">
                   <label class="custom-control-label" for="customCheckRegister">
-                    <span class="text-muted">Eu concordo com o <a href="#!">
+                    <span class="text-muted">Eu concordo com o <a routerLinkActive="active" [routerLink]="['/register']">
                       Política de Privacidade</a></span>
                   </label>
                 </div>
               </div>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4">Criar Conta</button>
+              <button type="button" class="btn btn-primary mt-4" routerLinkActive="active" [routerLink]="['/login']">Criar Conta</button>
             </div>
           </form>
         </div>
