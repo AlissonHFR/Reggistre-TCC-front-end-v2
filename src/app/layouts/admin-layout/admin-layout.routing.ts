@@ -7,6 +7,7 @@ import { NewCategoryComponent } from 'src/app/pages/category/new-category/new-ca
 import { ListCategoriesComponent } from 'src/app/pages/category/list-categories/list-categories.component';
 import { NewMovementComponent } from 'src/app/pages/movement/new-movement/new-movement.component';
 import { ListMovementsComponent } from 'src/app/pages/movement/list-movements/list-movements.component';
+import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -16,4 +17,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'categories',         component: ListCategoriesComponent },
     { path: 'new-movement',         component: NewMovementComponent },
     { path: 'movements',         component: ListMovementsComponent },
+    { path: 'change-password',         component: ChangePasswordComponent },
 ];

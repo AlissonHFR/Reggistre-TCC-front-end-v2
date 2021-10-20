@@ -15,6 +15,7 @@ import { ListCategoriesComponent } from 'src/app/pages/category/list-categories/
 import { ListMovementsComponent } from 'src/app/pages/movement/list-movements/list-movements.component';
 import { NewMovementComponent } from 'src/app/pages/movement/new-movement/new-movement.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NewCategoryComponent,
     ListCategoriesComponent,
     NewMovementComponent,
-    ListMovementsComponent
+    ListMovementsComponent,
+    ChangePasswordComponent
   ]
 })
 
