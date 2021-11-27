@@ -1,0 +1,17 @@
+::ng-deep .spinner {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  .mat-progress-spinner,
+  .mat-spinner {
+    circle {
+      stroke: #5e72e4;
+    }
+  }
+}
+
+.pageIndex {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
