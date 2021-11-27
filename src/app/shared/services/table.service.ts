@@ -2,27 +2,29 @@ import { Injectable } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class TableService {
-    public observer: Observable<null>;
-    private subscribers: Subscriber<null>[] = [];
+  public numberOfEntities = 5;
+  public entities: any[];
 
-    constructor() {
-        this.observer = new Observable((subscriber) => {
-            this.subscribers.push(subscriber);
-            return () => {
-                const index = this.subscribers.indexOf(subscriber);
-                this.subscribers.splice(index, 1);
-            };
-        });
-    }
+  constructor() {}
 
-    refresh() {
-        this.subscribers.forEach((subscriber) => subscriber.next());
-    }
-    
-    public get hasSubscribers(): boolean {
-        return this.subscribers.length > 0;
-    }
+  public paginateEntities(index: number) {
+    let provEntities = [];
+    this.entities.map((entity, i) => {
+      if (
+        i >= index * this.numberOfEntities &&
+        i < (index + 1) * this.numberOfEntities
+      ) {
+        provEntities.push(entity);
+      }
+    });
+
+    return provEntities;
+  }
+
+  public getPageCount() {
+    return Math.ceil(this.entities.length / this.numberOfEntities);
+  }
 }

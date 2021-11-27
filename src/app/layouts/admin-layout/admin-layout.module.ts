@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,6 +17,8 @@ import { ListMovementsComponent } from 'src/app/pages/movement/list-movements/li
 import { NewMovementComponent } from 'src/app/pages/movement/new-movement/new-movement.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
+import { MovementTableComponent } from 'src/app/pages/movement/list-movements/movement-table/movement-table.component';
+import { MaterialModule } from 'src/app/material.module';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -27,7 +30,8 @@ import { ChangePasswordComponent } from 'src/app/pages/change-password/change-pa
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    MaterialModule,
   ],
   declarations: [
     DashboardComponent,
@@ -37,8 +41,8 @@ import { ChangePasswordComponent } from 'src/app/pages/change-password/change-pa
     ListCategoriesComponent,
     NewMovementComponent,
     ListMovementsComponent,
-    ChangePasswordComponent
-  ]
+    ChangePasswordComponent,
+    MovementTableComponent,
+  ],
 })
-
 export class AdminLayoutModule {}

@@ -18,7 +18,7 @@ import { AuthInterceptor, AuthService } from './shared/services/auth.service';
 import { UserService } from './shared/services/user.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-
+import { TableService } from './shared/services/table.service';
 
 @NgModule({
   imports: [
@@ -31,19 +31,16 @@ import { CommonModule } from '@angular/common';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    AuthLayoutComponent
-  ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [
     CategoryService,
     MovementService,
     UserService,
     AuthService,
-   // ActiveWhenLogged,
+    TableService,
+    // ActiveWhenLogged,
     //ActiveWhenNotLogged,
     {
       provide: HTTP_INTERCEPTORS,
@@ -51,6 +48,6 @@ import { CommonModule } from '@angular/common';
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
