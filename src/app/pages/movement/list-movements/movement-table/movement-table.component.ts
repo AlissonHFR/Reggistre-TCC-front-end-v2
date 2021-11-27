@@ -22,6 +22,12 @@ export class MovementTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getMovements();
+  }
+
+  getMovements() {
+    this.hasLoaded = false;
+    this.movements = [];
     this.movementService.readAll().subscribe({
       next: (movs) => {
         this.tableService.entities = movs;
@@ -42,6 +48,6 @@ export class MovementTableComponent implements OnInit {
 
   changePage(page: number): void {
     this.currentPage = page;
-    this.movements = this.tableService.paginateEntities(page);
+    this.getMovements();
   }
 }

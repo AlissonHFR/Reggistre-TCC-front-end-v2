@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
 import { MovementTableComponent } from 'src/app/pages/movement/list-movements/movement-table/movement-table.component';
 import { MaterialModule } from 'src/app/material.module';
+import { InfoCardsComponent } from 'src/app/components/info-cards/info-cards.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -43,6 +44,7 @@ import { MaterialModule } from 'src/app/material.module';
     ListMovementsComponent,
     ChangePasswordComponent,
     MovementTableComponent,
+    InfoCardsComponent,
   ],
 })
 export class AdminLayoutModule {}
