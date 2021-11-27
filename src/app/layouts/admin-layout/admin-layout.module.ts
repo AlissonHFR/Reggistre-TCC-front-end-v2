@@ -17,9 +17,10 @@ import { ListMovementsComponent } from 'src/app/pages/movement/list-movements/li
 import { NewMovementComponent } from 'src/app/pages/movement/new-movement/new-movement.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangePasswordComponent } from 'src/app/pages/change-password/change-password.component';
-import { MovementTableComponent } from 'src/app/pages/movement/list-movements/movement-table/movement-table.component';
 import { MaterialModule } from 'src/app/material.module';
 import { InfoCardsComponent } from 'src/app/components/info-cards/info-cards.component';
+import { CategoryTableComponent } from 'src/app/pages/category/list-categories/category-table/category-table.component';
+import { MovementTableComponent } from 'src/app/pages/movement/list-movements/movement-table/movement-table.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { InfoCardsComponent } from 'src/app/components/info-cards/info-cards.com
     ChangePasswordComponent,
     MovementTableComponent,
     InfoCardsComponent,
+    CategoryTableComponent,
   ],
 })
 export class AdminLayoutModule {}
