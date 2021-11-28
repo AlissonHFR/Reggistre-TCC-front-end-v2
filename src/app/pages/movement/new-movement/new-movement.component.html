@@ -1,4 +1,5 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 300px;  background-size: cover; background-position: center top;">
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 300px;  background-size: cover; background-position: center top;">
   <!-- Mask -->
   <span class="mask bg-gradient-success opacity-8"></span>
   <!-- Header container -->
@@ -6,7 +7,8 @@
     <div class="row">
       <div class="col-lg-7 col-md-10">
         <h1 class="display-2 text-white">Nova movimentação</h1>
-        <p class="text-white mt-0 mb-5">Esta é a página de cadastro de movimentações. Aqui você pode criar as suas movimentações podendo ser tanto de despesas quanto de receitas.</p>
+        <p class="text-white mt-0 mb-5">Esta é a página de cadastro de movimentações. Aqui você pode criar as suas
+          movimentações podendo ser tanto de despesas quanto de receitas.</p>
         <!-- <a href="#!" class="btn btn-info">Editar Perfil</a> -->
       </div>
     </div>
@@ -14,7 +16,6 @@
 </div>
 <div class="container-fluid mt--7">
   <div class="row">
-
     <div class="col-xl-12 order-xl-1">
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
@@ -25,54 +26,85 @@
           </div>
         </div>
         <div class="card-body">
-          <form>
+          <form [formGroup]="movementForm">
             <h6 class="heading-small text-muted mb-4">Informação da movimentação</h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Nome</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Nome da categoria" value="Transporte">
+                    <label class="form-control-label {{getFieldError('nome') ? 'field-error' : ''}}"
+                      for="input-username">Nome</label>
+                    <input formControlName="nome" type="text" id="input-username"
+                      class="form-control form-control-alternative" placeholder="Nome da categoria" value="Transporte">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">Descrição</label>
-                    <input type="text" id="input-email" class="form-control form-control-alternative" placeholder="Descrição">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">Data</label>
-                    <input type="date" id="input-first-name" class="form-control form-control-alternative">
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Tipo movimentação</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Tipo de movimentação" value="Despesa">
+                    <label class="form-control-label {{getFieldError('descricao') ? 'field-error' : ''}}"
+                      for="input-email">Descrição</label>
+                    <input formControlName="descricao" type="text" id="input-email"
+                      class="form-control form-control-alternative" placeholder="Descrição">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">Valor</label>
-                    <input type="number" id="input-first-name" class="form-control form-control-alternative">
+                    <label class="form-control-label {{getFieldError('data') ? 'field-error' : ''}}"
+                      for="input-first-name">Data</label>
+                    <input formControlName="data" type="date" id="input-first-name"
+                      class="form-control form-control-alternative">
                   </div>
                 </div>
                 <div class="col-lg-6">
+                  <div class="form-group" style="display: flex; flex-direction: column;">
+                    <label class="form-control-label {{getFieldError('tipoMovimentacao') ? 'field-error' : ''}}"
+                      for="input-last-name">Tipo
+                      movimentação</label>
+                    <div (click)="setSelectTouchState('tipoMovimentacao')" ngbDropdown ngbDropdownToggle>
+                      <input formControlName="tipoMovimentacao" type="text"
+                        class="form-control form-control-alternative" disabled
+                        placeholder="Selecione o tipo de movimentação">
+                      <div ngbDropdownMenu class="dropdown-menu-right">
+                        <a (click)="selectMovementType('Despesa')" class="dropdown-item"
+                          href="javascript:void(0)">Despesa</a>
+                        <a (click)="selectMovementType('Receita')" class="dropdown-item"
+                          href="javascript:void(0)">Receita</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Categoria</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" >
+                    <label class="form-control-label {{getFieldError('valor') ? 'field-error' : ''}}"
+                      for="input-first-name">Valor</label>
+                    <input placeholder="Valor" formControlName="valor" type="number" id="input-first-name"
+                      class="form-control form-control-alternative">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group" style="display: flex; flex-direction: column;">
+                    <label class="form-control-label {{getFieldError('idCategoria') ? 'field-error' : ''}}"
+                      for="input-last-name">Categoria</label>
+                    <div (click)="setSelectTouchState('idCategoria')" ngbDropdown ngbDropdownToggle>
+                      <input placeholder="Selecione a categoria" disabled formControlName="idCategoria" type="text"
+                        class="form-control form-control-alternative">
+                      <div ngbDropdownMenu class="dropdown-menu-right">
+                        <div *ngIf="!hasLoadedCategories" class="spinner">
+                          <mat-spinner [diameter]="25" color="blue"></mat-spinner>
+                        </div>
+                        <a *ngFor="let category of categories" (click)="selectCategory(category.id, category.nome)"
+                          class="dropdown-item" href="javascript:void(0)">{{category.nome}}</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="col-12 text-right">
                 <a href="#!" class="btn btn-sm btn-danger">Cancelar</a>
-                <a href="#movements" class="btn btn-sm btn-primary">Criar movimentação</a>
+                <a (click)="create()" class="btn btn-sm btn-primary">Criar movimentação</a>
               </div>
             </div>
           </form>
