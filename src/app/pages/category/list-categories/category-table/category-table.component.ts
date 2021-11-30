@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/shared/interfaces/category.interface';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { TableService } from 'src/app/shared/services/table.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-table',
@@ -17,7 +19,9 @@ export class CategoryTableComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private tableService: TableService
+    private tableService: TableService,
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.getCategories();
@@ -47,5 +51,37 @@ export class CategoryTableComponent implements OnInit {
   changePage(page: number): void {
     this.currentPage = page;
     this.getCategories();
+  }
+
+  editCategory(id: number) {
+    this.router.navigate(['/new-category'], { queryParams: { id } });
+  }
+
+  deleteCategory(id: number) {
+    this.categoryService.delete(id).subscribe({
+      next: (movs) => {
+        this.snackBar.open('Categoria deletada com sucesso!', 'OK', {
+          duration: 5000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          panelClass: 'notif-success',
+        });
+        this.getCategories();
+      },
+      error: (e) => {
+        console.log(e);
+        this.snackBar.open(
+          'Erro ao deletar a categoria, tente novamente mais tarde!',
+          'OK',
+          {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            panelClass: 'notif-error',
+          }
+        );
+      },
+      complete: () => (this.hasLoaded = true),
+    });
   }
 }

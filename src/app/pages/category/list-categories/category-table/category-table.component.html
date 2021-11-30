@@ -19,7 +19,7 @@
       </thead>
       <tbody>
 
-        <tr *ngFor="let category of categories">
+        <tr *ngFor="let category of categories; index as i">
           <th scope="row">
             <div class="media align-items-center">
               <div class="media-body">
@@ -32,10 +32,11 @@
               <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                 <i class="fas fa-ellipsis-v"></i>
               </a>
-              <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+              <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow {{i === 0 ? 'first-dropdown' : ''}}">
+                <a (click)="editCategory(category.id)" class="dropdown-item custom-item" href="javascript:void(0)"> <i
+                    class="fas fa-edit"></i>Editar</a>
+                <a (click)="deleteCategory(category.id)" class="dropdown-item custom-item" style="color: red"
+                  href="javascript:void(0)"> <i class="fas fa-trash"></i>Excluir</a>
               </div>
             </div>
           </td>
