@@ -19,6 +19,7 @@ import { UserService } from './shared/services/user.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { TableService } from './shared/services/table.service';
+import { AwardsService } from './shared/services/awards.service';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { TableService } from './shared/services/table.service';
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [
     CategoryService,
+    AwardsService,
     MovementService,
     UserService,
     AuthService,

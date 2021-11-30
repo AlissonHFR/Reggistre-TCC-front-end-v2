@@ -1,0 +1,28 @@
+::ng-deep .cdk-overlay-container {
+  position: fixed;
+  top: -5px;
+  z-index: 9999;
+  right: -5px;
+}
+
+::ng-deep .notif-error {
+  background-color: #f44336;
+}
+
+::ng-deep .notif-warning {
+  background-color: #ff9800;
+}
+
+::ng-deep .notif-success {
+  background-color: #4caf50;
+}
+
+::ng-deep .mat-snack-bar-container {
+  color: #fff;
+  box-shadow: 8px 0px 16px rgba(0, 0, 0, 0.16);
+}
+
+::ng-deep .mat-simple-snackbar-action button {
+  background-color: unset;
+  color: #fff;
+}
