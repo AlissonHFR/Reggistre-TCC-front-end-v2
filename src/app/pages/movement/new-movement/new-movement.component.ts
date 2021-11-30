@@ -3,8 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/shared/interfaces/category.interface';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovementService } from 'src/app/shared/services/movement.service';
+import { Movement } from 'src/app/shared/interfaces/movement.interface';
 
 @Component({
   selector: 'app-new-movement',
@@ -21,6 +22,9 @@ export class NewMovementComponent implements OnInit {
     idCategoria: new FormControl('', Validators.required),
   });
 
+  isUpdate = false;
+  currentId = 0;
+
   selectedCategoryId = null;
 
   categories: Category[];
@@ -30,7 +34,8 @@ export class NewMovementComponent implements OnInit {
     private categoryService: CategoryService,
     private movementService: MovementService,
     public snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +46,32 @@ export class NewMovementComponent implements OnInit {
       error: (e) => console.error(e),
       complete: () => (this.hasLoadedCategories = true),
     });
+    let id = this.route.snapshot.queryParams.id;
+    if (id !== undefined) {
+      this.currentId = id;
+      this.movementService.readById(id).subscribe({
+        next: (mov: Movement) => {
+          let date = new Date(mov.data);
+          let dateString = `${date.getFullYear()}`;
+
+          if (date.getMonth().toString().length === 1)
+            dateString += `-0${date.getMonth()}`;
+          else dateString += `-${date.getMonth()}`;
+          if (date.getDate().toString().length === 1)
+            dateString += `-0${date.getDate()}`;
+          else dateString += `-${date.getDate()}`;
+
+          this.movementForm.patchValue({
+            nome: mov.nome,
+            data: dateString,
+            descricao: mov.descricao,
+            tipoMovimentacao: mov.tipoMovimentacao,
+            valor: mov.valor,
+          });
+          this.isUpdate = true;
+        },
+      });
+    }
   }
 
   create() {
@@ -52,31 +83,60 @@ export class NewMovementComponent implements OnInit {
         movementData.tipoMovimentacao.toLowerCase();
       movementData.data = new Date(movementData.data).toISOString();
 
-      this.movementService.create(movementData).subscribe({
-        next: (data) => {
-          console.log(data);
-          this.snackBar.open('Movimentação criada com sucesso!', 'OK', {
-            duration: 5000,
-            verticalPosition: 'top',
-            horizontalPosition: 'right',
-            panelClass: 'notif-success',
-          });
-          this.router.navigate(['/movements']);
-        },
-        error: (err) => {
-          console.log(err);
-          this.snackBar.open(
-            'Erro ao criar a movimentação, tente novamente mais tarde!',
-            'OK',
-            {
+      if (!this.isUpdate) {
+        this.movementService.create(movementData).subscribe({
+          next: (data) => {
+            console.log(data);
+            this.snackBar.open('Movimentação criada com sucesso!', 'OK', {
               duration: 5000,
               verticalPosition: 'top',
               horizontalPosition: 'right',
-              panelClass: 'notif-error',
-            }
-          );
-        },
-      });
+              panelClass: 'notif-success',
+            });
+            this.router.navigate(['/movements']);
+          },
+          error: (err) => {
+            console.log(err);
+            this.snackBar.open(
+              'Erro ao criar a movimentação, tente novamente mais tarde!',
+              'OK',
+              {
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'right',
+                panelClass: 'notif-error',
+              }
+            );
+          },
+        });
+      } else {
+        movementData.id = this.currentId;
+        this.movementService.create(movementData).subscribe({
+          next: (data) => {
+            console.log(data);
+            this.snackBar.open('Movimentação atualizada com sucesso!', 'OK', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'right',
+              panelClass: 'notif-success',
+            });
+            this.router.navigate(['/movements']);
+          },
+          error: (err) => {
+            console.log(err);
+            this.snackBar.open(
+              'Erro ao atualizar a movimentação, tente novamente mais tarde!',
+              'OK',
+              {
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'right',
+                panelClass: 'notif-error',
+              }
+            );
+          },
+        });
+      }
     } else {
       this.snackBar.open(
         'Complete todos os campos com informações válidas!',
